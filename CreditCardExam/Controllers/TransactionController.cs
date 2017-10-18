@@ -116,12 +116,10 @@ namespace CreditCardExam.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditTransaction()
+        public ActionResult EditTransaction(int Id, string transDesc)
         {
-            CCTrans transaction = new CCTrans();
-            String Id = Request.Form["transactions[0].Id"];
-            if (Id != null) transaction.Id = Int32.Parse(Id);
-            return RedirectToAction("Everything", "Customer",new { Id = transaction.Id });
+            Repository.updateTransDesc(Id, transDesc);
+            return RedirectToAction("Everything", "Customer",new { Id = Id });
         }
 
         protected override void Dispose(bool disposing)

@@ -27,9 +27,9 @@
 }
 <h3>Edit Transaction</h3>
 @using (Html.BeginForm("EditTransaction", "Transaction"))
-{
-    @Html.HiddenFor(model => model.transactions[0].Id)
-    @Html.LabelFor(model => model.transactions[0].transDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-    @Html.EditorFor(model => model.transactions[0].transDesc, new { htmlAttributes = new { @class = "form-control" } })
+{   
+    @Html.HiddenFor(model => model.transaction.Id)
+    @Html.LabelFor(model => model.transaction.transDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.EditorFor(model => model.transaction.transDesc, new { htmlAttributes = new { @class = "form-control" } })
     <input type="submit" value="Save" class="btn btn-default" />
 }

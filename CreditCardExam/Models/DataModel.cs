@@ -30,6 +30,22 @@ namespace CreditCardExam.Models
             List<CCTrans> transactions = db.transactions.ToList();
             return transactions;
         }
+
+        public static CCTrans getTransaction(int id)
+        {
+            CreditCardDbContext db = new CreditCardDbContext();
+            CCTrans transaction = db.transactions.Find(id);
+            return transaction;
+        }
+
+        public static void updateTransDesc(int transId, string transDesc)
+        {
+            CreditCardDbContext db = new CreditCardDbContext();
+            CCTrans transaction = getTransaction(transId);
+            transaction.transDesc = transDesc;
+            db.Entry(transaction).State = EntityState.Modified;
+            db.SaveChanges();
+        }
     }
 
     [Table("Customer")]
